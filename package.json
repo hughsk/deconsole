@@ -1,7 +1,7 @@
 {
   "name": "deconsole",
   "description": "Remove console.* statements from a JS source string, while preserving original formatting",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "main": "index.js",
   "browser": "index.js",
   "dependencies": {

@@ -6,10 +6,16 @@ Remove `console.*` statements from a JS source string, while preserving original
 
 [![deconsole](https://nodei.co/npm/deconsole.png?mini=true)](https://nodei.co/npm/deconsole)
 
-### `deconsole(str)`
+### `deconsole(str, [opts])`
 
 Takes a JavaScript string as input, and returns your cleaned up JavaScript in
 return.
+
+You can also pass the following options:
+
+* `range`: an array with two elements, the first being the start position and
+  the second being the end position for which to apply the input to. Each can
+  be either a `Number` or an `Object` with `row` and `column` properties.
 
 ## License ##
 

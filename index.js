@@ -1,5 +1,6 @@
-var falafel = require('falafel')
-var methods = [
+var position = require('file-position')
+var falafel  = require('falafel')
+var methods  = [
     'log'
   , 'warn'
   , 'info'
@@ -24,10 +25,32 @@ var methods = [
 
 module.exports = deconsole
 
-function deconsole(src) {
+function deconsole(src, opt) {
+  opt = opt || {}
   src = String(src)
 
+  var range = opt.range || []
+  var start = range.length ? range[0] : null
+  var end   = range.length ? range[1] : null
+
+  if (range = start !== null && end !== null) {
+    var getPosition = position(src)
+
+    start = typeof start !== 'number'
+      ? getPosition(start.row, start.column)
+      : start
+
+    end = typeof end !== 'number'
+      ? getPosition(end.row, end.column)
+      : end
+  }
+
   return falafel(src, function(node) {
+    if (range) {
+      if (node.range[0] < start) return
+      if (node.range[1] > end) return
+    }
+
     if (node.type !== 'Identifier') return
     if (node.name !== 'console') return
     if (!node.parent) return

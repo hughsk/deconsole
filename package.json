@@ -5,13 +5,15 @@
   "main": "index.js",
   "browser": "index.js",
   "dependencies": {
-    "falafel": "^0.3.1"
+    "falafel": "^0.3.1",
+    "file-position": "0.0.0"
   },
   "devDependencies": {
-    "tape": "^2.10.2"
+    "tape": "^2.10.2",
+    "faucet": "0.0.1"
   },
   "scripts": {
-    "test": "node test"
+    "test": "node test | faucet"
   },
   "author": "Hugh Kennedy <hughskennedy@gmail.com> (http://hughsk.io/)",
   "license": "MIT",
